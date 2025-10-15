@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aflight21 – Built by Pilots, for Pilots</title>
-  <meta name="description" content="Aflight21 – The aviation community built by pilots, for pilots. Connect, share, and access powerful tools for aviators." />
+  <meta name="description" content="Aflight21 – the aviation community built by pilots, for pilots. Connect, share, and access powerful tools for aviators." />
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
@@ -19,7 +19,7 @@
       justify-content: center;
     }
     h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
       margin-bottom: 0.5rem;
     }
     p {
@@ -27,9 +27,15 @@
       margin: 0.25rem 0;
       opacity: 0.9;
     }
+    .buttons {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
     a.button {
       display: inline-block;
-      margin-top: 2rem;
       padding: 0.8rem 1.6rem;
       background: #fff;
       color: #0A1D37;
@@ -43,21 +49,48 @@
       transform: translateY(-2px);
     }
     footer {
-      margin-top: 4rem;
+      margin-top: 5rem;
       font-size: 0.9rem;
       opacity: 0.7;
     }
+    .links {
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+    .links a {
+      color: #fff;
+      margin: 0 0.75rem;
+      text-decoration: underline;
+    }
+    img.logo {
+      max-width: 120px;
+      margin-bottom: 1.5rem;
+    }
     @media (max-width: 600px) {
-      h1 { font-size: 2rem; }
-      p { font-size: 1rem; }
+      h1 { font-size: 2.2rem; }
+      p { font-size: 1.1rem; }
     }
   </style>
 </head>
 <body>
+  <!-- Optional logo (replace src later with your logo file) -->
+  <!-- <img src="logo.png" alt="Aflight21 Logo" class="logo" /> -->
+
   <h1>Aflight21</h1>
   <p>The aviation community built by pilots, for pilots.</p>
   <p>Coming soon to iOS and Android.</p>
-  <a href="mailto:support@aflight21.com" class="button">Contact Support</a>
+
+  <div class="buttons">
+    <a href="#" class="button">App Store (Coming Soon)</a>
+    <a href="#" class="button">Google Play (Coming Soon)</a>
+  </div>
+
+  <div class="links">
+    <a href="/support">Support</a> |
+    <a href="/privacy.html">Privacy Policy</a> |
+    <a href="mailto:aflight21app@gmail.com">Contact</a>
+  </div>
+
   <footer>© 2025 Aflight21. All rights reserved.</footer>
 </body>
 </html>
