@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CFI Steep Turns Explained | Aflight21</title>
+  <meta
+    name="description"
+    content="CFI steep turns explained in a clean, practical format — what they are, why we do them, how to perform them, aerodynamic effects, risk management, and common errors."
+  />
+  <style>
+    :root {
+      --bg-dark: #071529;
+      --bg-mid: #0d2547;
+      --primary: #2188ff;
+      --primary-light: #5aa8ff;
+      --text: #ffffff;
+      --text-soft: #d8e6ff;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.14);
+      --section-light: #f6f9ff;
+      --section-text: #10233f;
+      --section-soft: #5b6c84;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+      --radius: 24px;
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg-dark), var(--bg-mid) 45%, var(--primary));
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(7, 21, 41, 0.68);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 78px;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.75;
+    }
+
+    .nav-cta,
+    .btn,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-cta,
+    .btn {
+      background: #fff;
+      color: #0a1d37;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .nav-cta:hover,
+    .btn:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 5rem 0 3rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--primary-light);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1.75rem;
+      align-items: center;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.7rem, 6vw, 4.4rem);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      letter-spacing: -1.4px;
+    }
+
+    .hero-copy p {
+      font-size: 1.08rem;
+      color: var(--text-soft);
+      max-width: 670px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(160deg, rgba(255,255,255,0.16), rgba(255,255,255,0.07));
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 28px;
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card-inner {
+      background: #f7f9fc;
+      color: #10233f;
+      border-radius: 22px;
+      padding: 1.2rem;
+    }
+
+    .hero-card-inner h3 {
+      margin-bottom: 0.9rem;
+      font-size: 1.15rem;
+    }
+
+    .hero-points {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .hero-point {
+      background: #fff;
+      border-radius: 16px;
+      padding: 0.85rem 1rem;
+      box-shadow: 0 8px 24px rgba(16, 35, 63, 0.08);
+      font-size: 0.96rem;
+      color: #233754;
+    }
+
+    .section-light {
+      background: var(--section-light);
+      color: var(--section-text);
+      padding: 4.5rem 0;
+    }
+
+    .section-dark {
+      padding: 4.5rem 0;
+    }
+
+    .section-heading {
+      margin-bottom: 1.7rem;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.12;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-heading p {
+      max-width: 760px;
+      color: var(--section-soft);
+      font-size: 1.03rem;
+    }
+
+    .section-dark .section-heading p {
+      color: var(--text-soft);
+    }
+
+    .cards-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .card,
+    .info-box,
+    .image-box {
+      border-radius: var(--radius);
+    }
+
+    .card {
+      background: #fff;
+      padding: 1.5rem;
+      box-shadow: 0 12px 30px rgba(16, 35, 63, 0.08);
+    }
+
+    .card h3 {
+      margin-bottom: 0.75rem;
+      font-size: 1.18rem;
+      color: var(--section-text);
+    }
+
+    .card p,
+    .card li {
+      color: var(--section-soft);
+    }
+
+    .card ul {
+      padding-left: 1.1rem;
+      margin-top: 0.6rem;
+    }
+
+    .card li {
+      margin-bottom: 0.5rem;
+    }
+
+    .dark-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      box-shadow: none;
+    }
+
+    .dark-card h3,
+    .dark-card p,
+    .dark-card li {
+      color: #fff;
+    }
+
+    .dark-card p,
+    .dark-card li {
+      color: var(--text-soft);
+    }
+
+    .dark-card ul {
+      padding-left: 1.1rem;
+      margin-top: 0.6rem;
+    }
+
+    .dark-card li {
+      margin-bottom: 0.5rem;
+    }
+
+    .full-card {
+      margin-top: 1.25rem;
+    }
+
+    .highlight-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .info-box {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 1.15rem;
+    }
+
+    .info-box h4 {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .info-box p {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    .section-light .info-box {
+      background: #fff;
+      border: none;
+      box-shadow: 0 10px 26px rgba(16, 35, 63, 0.08);
+    }
+
+    .section-light .info-box h4 {
+      color: var(--section-text);
+    }
+
+    .section-light .info-box p {
+      color: var(--section-soft);
+    }
+
+    .image-box {
+      margin-top: 1.25rem;
+      padding: 1rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .section-light .image-box {
+      background: #fff;
+      border: none;
+      box-shadow: 0 10px 26px rgba(16, 35, 63, 0.08);
+    }
+
+    .image-placeholder {
+      width: 100%;
+      min-height: 240px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #0a1d37, #4ca2ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      font-weight: 700;
+      padding: 1rem;
+    }
+
+    .image-note {
+      margin-top: 0.85rem;
+      font-size: 0.95rem;
+      color: var(--text-soft);
+    }
+
+    .section-light .image-note {
+      color: var(--section-soft);
+    }
+
+    .tip-box {
+      margin-top: 1.25rem;
+      padding: 1.2rem 1.3rem;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .tip-box h3 {
+      margin-bottom: 0.45rem;
+      font-size: 1.1rem;
+    }
+
+    .tip-box p {
+      color: var(--text-soft);
+    }
+
+    .section-light .tip-box {
+      background: #fff;
+      border: none;
+      box-shadow: 0 10px 26px rgba(16, 35, 63, 0.08);
+    }
+
+    .section-light .tip-box h3 {
+      color: var(--section-text);
+    }
+
+    .section-light .tip-box p {
+      color: var(--section-soft);
+    }
+
+    .cta-strip {
+      margin-top: 2rem;
+      background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 28px;
+      padding: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-strip h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .cta-strip p {
+      color: var(--text-soft);
+    }
+
+    footer {
+      background: #06111f;
+      color: rgba(255, 255, 255, 0.82);
+      padding: 2.2rem 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .cards-2,
+      .highlight-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        padding: 0.85rem 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-copy h1 {
+        letter-spacing: -1px;
+      }
+
+      .container {
+        width: min(var(--max-width), calc(100% - 1.2rem));
+      }
+
+      .footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="/" class="brand">Aflight21</a>
+
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/aviation-hub.html">Aviation Hub</a>
+        <a href="/support">Support</a>
+        <a href="/privacy.html">Privacy</a>
+      </nav>
+
+      <a href="https://apps.apple.com/us/app/aflight-pilot-connect/id6749191585" target="_blank" class="nav-cta">
+        Download App
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">CFI Guide</span>
+          <h1>CFI Steep Turns Explained</h1>
+          <p>
+            A steep turn is more than just a 360° turn at 45° or 50° bank. It is a maneuver that teaches precision, coordination, and division of attention while helping pilots understand load factor, stall margin, and overbanking tendency.
+          </p>
+
+          <div class="hero-actions">
+            <a href="/aviation-hub.html" class="btn">Back to Aviation Hub</a>
+            <a href="#aerodynamics" class="btn-secondary">Jump to Aerodynamics</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <h3>What this guide covers</h3>
+            <div class="hero-points">
+              <div class="hero-point">What steep turns are and why pilots practice them</div>
+              <div class="hero-point">How to perform the maneuver step by step</div>
+              <div class="hero-point">Lift, load factor, stall speed, and overbanking</div>
+              <div class="hero-point">Risk management and common teaching corrections</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-light">
+      <div class="container">
+        <div class="section-heading">
+          <h2>What is a steep turn?</h2>
+          <p>
+            A steep turn is a coordinated constant-altitude 360° turn performed in either direction. For private pilot standards it is typically flown at about 45° of bank, while commercial standards are commonly flown at about 50° of bank. The goal is to maintain altitude, airspeed, bank angle, coordination, and rollout heading throughout the maneuver.
+          </p>
+        </div>
+
+        <div class="cards-2">
+          <div class="card">
+            <h3>Why pilots do steep turns</h3>
+            <ul>
+              <li>Develop precise aircraft control</li>
+              <li>Improve coordination and smoothness</li>
+              <li>Build division of attention between outside references and instruments</li>
+              <li>Understand load factor, stall speed increase, and overbanking tendency</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Practical value</h3>
+            <p>
+              Steep turns train pilots to maintain precise control during steeply banked maneuvering flight while managing altitude, airspeed, rudder coordination, and stall margin.
+            </p>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <h3>Teaching angle</h3>
+          <p>
+            If you are teaching this as a CFI, steep turns are a great maneuver for showing that precision flying is not just about moving the controls — it is about understanding why the airplane behaves differently as bank angle increases.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-dark">
+      <div class="container">
+        <div class="section-heading">
+          <h2>How to perform a steep turn</h2>
+          <p>
+            The maneuver starts from straight-and-level flight with proper setup, clearing turns, and a visual reference for entry and rollout. A structured setup makes the entire maneuver smoother and easier to teach.
+          </p>
+        </div>
+
+        <div class="cards-2">
+          <div class="dark-card card">
+            <h3>Before starting</h3>
+            <ul>
+              <li>Begin from straight-and-level flight</li>
+              <li>Complete clearing turns</li>
+              <li>Pick an outside reference for entry and rollout</li>
+              <li>Choose an altitude at least 1,500 feet AGL</li>
+              <li>Use a recommended entry speed or maneuvering speed as appropriate</li>
+              <li>Use the proper configuration: flaps up, gear up if complex</li>
+            </ul>
+          </div>
+
+          <div class="dark-card card">
+            <h3>During the maneuver</h3>
+            <ul>
+              <li>Roll smoothly into the desired bank angle</li>
+              <li>As bank increases, begin adding back pressure</li>
+              <li>Add power as needed to maintain altitude and airspeed</li>
+              <li>Use rudder to stay coordinated</li>
+              <li>Hold bank angle and divide attention properly</li>
+              <li>Begin rollout before the entry heading and return to entry altitude and airspeed</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight-strip">
+          <div class="info-box">
+            <h4>Entry</h4>
+            <p>Smooth, coordinated rollout from straight-and-level flight matters more than abrupt control movement.</p>
+          </div>
+          <div class="info-box">
+            <h4>Hold</h4>
+            <p>Maintain altitude, airspeed, bank angle, and coordination together — not one at a time.</p>
+          </div>
+          <div class="info-box">
+            <h4>Rollout</h4>
+            <p>Roll out early enough to stop exactly on heading, not after drifting through it.</p>
+          </div>
+        </div>
+
+        <div class="image-box">
+          <div class="image-placeholder">
+            Add your steep turn maneuver image here
+          </div>
+          <div class="image-note">
+            Good image choices here: a top-down steep turn diagram or one of your maneuver illustrations.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-light" id="aerodynamics">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Aerodynamics of steep turns</h2>
+          <p>
+            This is where steep turns become especially valuable. They clearly demonstrate what happens when lift is tilted, why back pressure is needed, why the airplane feels heavier, and why stall speed rises as bank angle increases.
+          </p>
+        </div>
+
+        <div class="cards-2">
+          <div class="card">
+            <h3>What makes an airplane turn</h3>
+            <p>
+              In straight-and-level flight, lift acts vertically to oppose weight. In a turn, lift tilts and is divided into two components:
+            </p>
+            <ul>
+              <li><strong>Vertical component of lift</strong> — supports the airplane’s weight</li>
+              <li><strong>Horizontal component of lift</strong> — pulls the airplane through the turn</li>
+            </ul>
+            <p>
+              Because some lift is now being used horizontally, less remains available vertically. That is why altitude will decrease unless the pilot increases total lift.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Why back pressure is needed</h3>
+            <p>
+              Back pressure increases angle of attack, which increases total lift and helps restore enough vertical lift to maintain altitude. Without that correction, the airplane will tend to descend in the turn.
+            </p>
+          </div>
+        </div>
+
+        <div class="cards-2 full-card">
+          <div class="card">
+            <h3>Load factor and stall speed</h3>
+            <p>
+              As bank angle increases, load factor increases. Beyond about 45°, load factor rises rapidly, which means the wings must produce more total lift. This is why steep turns require increased back pressure.
+            </p>
+            <p>
+              Stall speed also increases with the square root of load factor. That means the pilot has less stall margin in a steep turn than in straight-and-level flight.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Overbanking tendency</h3>
+            <p>
+              In a steep turn, the outside wing travels faster than the inside wing. Because it moves faster, it produces more lift, and the airplane tends to roll further into the turn. The pilot must hold the bank with slight opposite aileron.
+            </p>
+          </div>
+        </div>
+
+        <div class="cards-2 full-card">
+          <div class="card">
+            <h3>Coordination and adverse yaw</h3>
+            <p>
+              In a coordinated turn, the airplane turns without slipping or skidding and the ball remains centered. When the ailerons are deflected, the down aileron creates more lift and more drag, which causes adverse yaw. Rudder must be used in the direction of the turn to keep the airplane coordinated.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>What the pilot feels</h3>
+            <p>
+              Students often feel heavier in the seat during a steep turn. That sensation comes from increased load factor. Some describe an outward pull, often called centrifugal force, but the actual turning force comes from the horizontal component of lift acting inward.
+            </p>
+          </div>
+        </div>
+
+        <div class="image-box">
+          <div class="image-placeholder">
+            Add your lift vector / load factor / overbanking image here
+          </div>
+          <div class="image-note">
+            Best place for diagrams showing vertical vs horizontal lift, load factor in a bank, or overbanking tendency.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-dark">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Risk management</h2>
+          <p>
+            Steep turns involve increased bank angle, increased load factor, and reduced stall margin, so the pilot must manage both aircraft control and safety throughout the maneuver.
+          </p>
+        </div>
+
+        <div class="cards-2">
+          <div class="dark-card card">
+            <h3>Main risks</h3>
+            <ul>
+              <li>Accelerated stall from excessive back pressure and decaying airspeed</li>
+              <li>Loss of coordination from improper rudder use</li>
+              <li>Altitude deviation from too little or too much back pressure</li>
+              <li>Overbanking tendency causing bank angle to continue increasing</li>
+              <li>Traffic collision risk from poor outside scanning</li>
+              <li>Exceeding practical or aircraft limits through abrupt or excessive inputs</li>
+            </ul>
+          </div>
+
+          <div class="dark-card card">
+            <h3>Risk mitigation</h3>
+            <ul>
+              <li>Complete proper clearing turns and maintain a strong outside scan</li>
+              <li>Use the correct entry speed and configuration</li>
+              <li>Make smooth, coordinated control inputs</li>
+              <li>Add only the pressure and power needed</li>
+              <li>Monitor airspeed, pitch, and coordination closely</li>
+              <li>Anticipate overbanking tendency and correct it early</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <h3>CFI teaching tip</h3>
+          <p>
+            When students struggle with steep turns, do not just say “hold altitude better.” Tie every correction back to the why: lift is tilted, load factor is rising, and the airplane naturally wants to behave differently than it does in straight-and-level flight.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-light">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Common errors and quick corrections</h2>
+          <p>
+            Most steep turn mistakes come from late corrections, poor division of attention, or misunderstanding the aerodynamic changes happening in the maneuver.
+          </p>
+        </div>
+
+        <div class="cards-2">
+          <div class="card">
+            <h3>Common errors</h3>
+            <ul>
+              <li>Improper pitch, bank, and power coordination</li>
+              <li>Failure to maintain altitude</li>
+              <li>Failure to maintain airspeed</li>
+              <li>Failure to maintain desired bank angle</li>
+              <li>Poor coordination during entry, turn, or rollout</li>
+              <li>Fixation on one instrument instead of proper division of attention</li>
+              <li>Loss of orientation</li>
+              <li>Overcontrolling or making abrupt inputs</li>
+              <li>Failure to anticipate overbanking tendency</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Quick corrections</h3>
+            <ul>
+              <li><strong>Climbing:</strong> usually too much back pressure</li>
+              <li><strong>Descending:</strong> usually not enough back pressure or the nose is dropping</li>
+              <li><strong>Airspeed decreasing:</strong> too much back pressure or too little power</li>
+              <li><strong>Airspeed increasing:</strong> not enough back pressure or too much power</li>
+              <li><strong>Bank increasing:</strong> failure to correct overbanking tendency</li>
+              <li><strong>Uncoordinated:</strong> improper rudder use, re-center the ball</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cta-strip">
+          <div>
+            <h3>More aviation guides are coming to the Aflight Aviation Hub.</h3>
+            <p>Explore more pilot resources, training topics, and practical aviation explanations.</p>
+          </div>
+
+          <a href="/aviation-hub.html" class="btn">Explore More Topics</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© 2026 Aflight21. All rights reserved.</div>
+
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/aviation-hub.html">Aviation Hub</a>
+        <a href="/support">Support</a>
+        <a href="/privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
