@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aviation Hub | Aflight21</title>
+  <meta
+    name="description"
+    content="Explore aviation guides, pilot topics, CFI explanations, career paths, and useful flying resources from Aflight."
+  />
+  <style>
+    :root {
+      --bg-dark: #071529;
+      --bg-mid: #0d2547;
+      --primary: #2188ff;
+      --primary-light: #5aa8ff;
+      --text: #ffffff;
+      --text-soft: #d8e6ff;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.14);
+      --section-light: #f6f9ff;
+      --section-text: #10233f;
+      --section-soft: #5b6c84;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+      --radius: 22px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg-dark), var(--bg-mid) 45%, var(--primary));
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(7, 21, 41, 0.68);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 78px;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.75;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1.2rem;
+      border-radius: 999px;
+      background: #fff;
+      color: #0a1d37;
+      font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-cta:hover,
+    .hub-link:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 5.2rem 0 3rem;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--primary-light);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 6vw, 4.6rem);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      letter-spacing: -1.3px;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      color: var(--text-soft);
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 2.2rem 0 5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 4vw, 2.3rem);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-soft);
+      margin-bottom: 1.8rem;
+      max-width: 760px;
+    }
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .topic-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.45rem;
+      box-shadow: none;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.28);
+    }
+
+    .topic-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 0.7rem;
+      color: #fff;
+    }
+
+    .topic-card p {
+      color: var(--text-soft);
+      font-size: 0.97rem;
+      margin-bottom: 1rem;
+    }
+
+    .hub-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.78rem 1.1rem;
+      border-radius: 999px;
+      background: #fff;
+      color: #0a1d37;
+      font-weight: 700;
+      transition: transform 0.2s ease;
+    }
+
+    .coming-soon {
+      display: inline-block;
+      font-size: 0.88rem;
+      padding: 0.38rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-soft);
+      margin-bottom: 0.9rem;
+    }
+
+    footer {
+      background: #06111f;
+      color: rgba(255, 255, 255, 0.82);
+      padding: 2.2rem 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 2rem;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    @media (max-width: 980px) {
+      .topic-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        padding: 0.85rem 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .container {
+        width: min(var(--max-width), calc(100% - 1.2rem));
+      }
+
+      .footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="/" class="brand">Aflight21</a>
+
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/aviation-hub.html">Aviation Hub</a>
+        <a href="/support">Support</a>
+        <a href="/privacy.html">Privacy</a>
+      </nav>
+
+      <a href="https://apps.apple.com/us/app/aflight-pilot-connect/id6749191585" target="_blank" class="nav-cta">
+        Download App
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Aflight Aviation Hub</span>
+        <h1>Helpful aviation topics, pilot guides, and useful flying content.</h1>
+        <p>
+          Explore aviation articles, flight training topics, pilot career guidance, and practical flying resources — all in one growing hub.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Featured Topics</h2>
+        <p class="section-subtitle">
+          Start with a few strong topics and grow this page over time. These guides can be practical, searchable, and easy to share.
+        </p>
+
+        <div class="topic-grid">
+          <div class="topic-card">
+            <h3>CFI Steep Turns Explained</h3>
+            <p>Break down steep turns in a clear teaching flow with aerodynamics, risk management, and common errors.</p>
+            <a href="/cfi-steep-turns.html" class="hub-link">Read Guide</a>
+          </div>
+
+          <div class="topic-card">
+            <span class="coming-soon">Coming Soon</span>
+            <h3>How to Teach Chandelles</h3>
+            <p>A clean CFI-focused explanation of chandelles, performance, coordination, and energy management.</p>
+            <a href="#" class="hub-link">Coming Soon</a>
+          </div>
+
+          <div class="topic-card">
+            <span class="coming-soon">Coming Soon</span>
+            <h3>Steps to Become a Pilot</h3>
+            <p>A simple overview of the path from beginner to pilot, including ratings, training, and progression.</p>
+            <a href="#" class="hub-link">Coming Soon</a>
+          </div>
+
+          <div class="topic-card">
+            <span class="coming-soon">Coming Soon</span>
+            <h3>Private Pilot Airspace Explained</h3>
+            <p>Understand controlled and uncontrolled airspace in a simpler, more student-friendly format.</p>
+            <a href="#" class="hub-link">Coming Soon</a>
+          </div>
+
+          <div class="topic-card">
+            <span class="coming-soon">Coming Soon</span>
+            <h3>Rectangular Course Step-by-Step</h3>
+            <p>Learn the purpose, setup, wind correction, and common errors behind this classic ground reference maneuver.</p>
+            <a href="#" class="hub-link">Coming Soon</a>
+          </div>
+
+          <div class="topic-card">
+            <span class="coming-soon">Coming Soon</span>
+            <h3>Why Stall Speed Increases in a Turn</h3>
+            <p>A practical explanation of load factor, accelerated stalls, and what pilots should understand in steep turns.</p>
+            <a href="#" class="hub-link">Coming Soon</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© 2026 Aflight21. All rights reserved.</div>
+
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/support">Support</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="mailto:aflightapp@gmail.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
